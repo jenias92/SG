@@ -1,91 +1,104 @@
 public class Elders {
-	private String Id;
-	private String FirstName;
-	private String LastName;
-	private String City;
-	private String Address;
-	private String BirthDay;
-	private String Languages;
-	private String Hobbies;
+	private String id;
+	private String firstName;
+	private String lastName;
+	private String city;
+	private String address;
+	private String birthDay;
+	private String languages;
+	private String hobbies;
+	private String telephone;
+	private String matchId;
 
 	public Elders() {
+		matchId = "None";
 	}
 
-	public String[] fullData() {
-		String[] arr = new String[8];
-		arr[0] = Id;
-		arr[1] = FirstName;
-		arr[2] = LastName;
-		arr[3] = City;
-		arr[4] = Address;
-		arr[5] = BirthDay;
-		arr[6] = Languages;
-		arr[7] = Hobbies;
-		return arr;
+	public String fullData() {
+		String full;
+		full = id + ',' + firstName + ',' + lastName + ',' + city + ',' + ',' + address + ',' + address + ',' + birthDay
+				+ ',' + languages + ',' + ',' + hobbies + ',' + telephone + ',' + ',' + matchId;
+		return full;
 	}
 
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getFirstName() {
-		return FirstName;
+		return this.firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
-		return LastName;
+		return this.lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public String getCity() {
-		return City;
+		return this.city;
 	}
 
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 
 	public String getAddress() {
-		return Address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getBirthDay() {
-		return BirthDay;
+		return this.birthDay;
 	}
 
 	public void setBirthDay(String birthDay) {
-		BirthDay = birthDay;
+		this.birthDay = birthDay;
 	}
 
 	public String getLanguages() {
-		return Languages;
+		return this.languages;
 	}
 
 	public void setLanguages(String languages) {
-		Languages = languages;
+		this.languages = languages;
 	}
 
 	public String getHobbies() {
-		return Hobbies;
+		return this.hobbies;
 	}
 
 	public void setHobbies(String hobbies) {
-		Hobbies = hobbies;
+		this.hobbies = hobbies;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getTelephone() {
+		return this.telephone;
+	}
+
+	public void setMatchId(String matchId) {
+		this.matchId = matchId;
+	}
+
+	public String getMatchId() {
+		return this.matchId;
 	}
 
 	// getters and setters

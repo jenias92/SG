@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -32,9 +31,10 @@ public class ImportFromExcel {
 		case NUMERIC:
 			return cell.getNumericCellValue();
 
-		}
+		default:
+			return null;
 
-		return null;
+		}
 	}
 
 	public List<Elders> readBooksFromExcelFile(String excelFilePath) throws IOException {
@@ -94,11 +94,13 @@ public class ImportFromExcel {
 		return newElders;
 	}
 
-	public void InsertIntoDB(List<Elders> ElderList) throws IOException {
+	public String InsertIntoDB(List<Elders> ElderList) throws IOException {
 		boolean elderExist = false;
 		File elderDbFile = new File(elderDbFilePath);
+		String output = "";
 		if (!elderDbFile.exists()) {
 			System.out.println("Going to create the file as its not exist");
+			output += "Going to create the file as its not exist\n";
 			elderDbFile.createNewFile();
 		} else {
 			FileWriter fileWritter = new FileWriter(elderDbFile, true);
@@ -112,24 +114,25 @@ public class ImportFromExcel {
 				elderExist = this.checkIfExist(id, fileReader);
 				if (elderExist) {
 					System.out.printf("Skip ID: %s as it already in DB\n", id);
+					output += "Skip ID: " + id + " as it already in DB\n";
 					continue;
 				} else {
 					System.out.printf("Importing ID: %s\n", id);
-					String single = Arrays.toString(ElderList.get(i).fullData());
+					output += "Importing ID: " + id + "\n";
+					String single = ElderList.get(i).fullData();
 					buffer.write("\n" + single);
 				}
 			}
 			buffer.close();
 			System.out.println("Import Completed");
+			output += "Import Completed";
 		}
-
+		return output;
 	}
 
 	private boolean checkIfExist(String id, Scanner file) {
 		while (file.hasNextLine()) {
 			String data = file.nextLine();
-			data = data.replace("[", "");
-			data = data.replace("]", "");
 			data = data.replace(", ", ",");
 			String[] split = data.split(",");
 			if (id.equals(split[0])) {
