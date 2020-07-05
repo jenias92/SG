@@ -1,12 +1,11 @@
-import java.io.BufferedWriter;
+package ImportElder;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -15,12 +14,22 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import Elders.Elders;
+
 public class ImportFromExcel {
 
-	private String elderDbFilePath = "C:/test/aaaaa.txt";
+	private String userExcelFile;
 
 	public ImportFromExcel() {
 
+	}
+
+	public String getUserExcelFile() {
+		return userExcelFile;
+	}
+
+	public void setUserExcelFile(String userExcelFile) {
+		this.userExcelFile = userExcelFile;
 	}
 
 	private Object getCellValue(Cell cell) {
@@ -82,6 +91,10 @@ public class ImportFromExcel {
 				case 7:
 					elder.setHobbies((String) getCellValue(nextCell));
 					break;
+				case 8:
+					String phone = formatter.formatCellValue(nextCell);
+					elder.setTelephone(phone);
+					break;
 				}
 
 			}
@@ -94,51 +107,4 @@ public class ImportFromExcel {
 		return newElders;
 	}
 
-	public String InsertIntoDB(List<Elders> ElderList) throws IOException {
-		boolean elderExist = false;
-		File elderDbFile = new File(elderDbFilePath);
-		String output = "";
-		if (!elderDbFile.exists()) {
-			System.out.println("Going to create the file as its not exist");
-			output += "Going to create the file as its not exist\n";
-			elderDbFile.createNewFile();
-		} else {
-			FileWriter fileWritter = new FileWriter(elderDbFile, true);
-			BufferedWriter buffer = new BufferedWriter(fileWritter);
-			Scanner fileReader = new Scanner(elderDbFile);
-			for (int i = 0; i < ElderList.size(); i++) {
-				String id = ElderList.get(i).getId();
-				if (i == 0) {
-					continue;
-				}
-				elderExist = this.checkIfExist(id, fileReader);
-				if (elderExist) {
-					System.out.printf("Skip ID: %s as it already in DB\n", id);
-					output += "Skip ID: " + id + " as it already in DB\n";
-					continue;
-				} else {
-					System.out.printf("Importing ID: %s\n", id);
-					output += "Importing ID: " + id + "\n";
-					String single = ElderList.get(i).fullData();
-					buffer.write("\n" + single);
-				}
-			}
-			buffer.close();
-			System.out.println("Import Completed");
-			output += "Import Completed";
-		}
-		return output;
-	}
-
-	private boolean checkIfExist(String id, Scanner file) {
-		while (file.hasNextLine()) {
-			String data = file.nextLine();
-			data = data.replace(", ", ",");
-			String[] split = data.split(",");
-			if (id.equals(split[0])) {
-				return true;
-			}
-		}
-		return false;
-	}
 }

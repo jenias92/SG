@@ -1,3 +1,5 @@
+package ImportElder;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,6 +41,7 @@ public class ImportElderView extends JFrame {
 		jButton2.setText(processBtn);
 		jButton2.setActionCommand(processBtn);
 		jButton2.setEnabled(false);
+		setResizable(false);
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
