@@ -1,5 +1,11 @@
+package Amuta;
+
 import java.io.File;
 import java.io.IOException;
+
+import Login.*;
+import Users.*;
+import ElderList.*;
 
 public class AmutaController {
 
@@ -29,7 +35,6 @@ public class AmutaController {
 				e1.printStackTrace();
 			}
 		});
-        
         view.getElderlist().addActionListener(e->{
         	view.getFrame().dispose();
 			ElderListPage el=new ElderListPage();

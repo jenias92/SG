@@ -1,5 +1,6 @@
 package Volunteer;
 
+import Users.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -9,9 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import Users.Users;
-
-public class Volunteers extends Users {
+public class Volunteers extends User {
 
 	private String Fullname;
 	private String Adress;
@@ -190,7 +189,7 @@ public class Volunteers extends Users {
 		System.out.println("Going to search Voulnteer in DB");
 		for (int i = 0; i < db.size(); i++) {
 			single = db.get(i);
-			String UserID = single.getID();
+			String UserID = single.GetId();
 			if (id.equals(UserID)) {
 				System.out.println("Voulnteer found");
 				VolunteerOldDataLocation = i;
@@ -208,7 +207,7 @@ public class Volunteers extends Users {
 		FileWriter fileWritter = new FileWriter(voulnteerDbFile, false);
 		BufferedWriter buffer = new BufferedWriter(fileWritter);
 		List<Volunteers> db = ReadDataFromDB();
-		String id = SingleUser.getID();
+		String id = SingleUser.GetId();
 		VoulnteerExist = checkIfVolunteerExist(id, db);
 		if (VoulnteerExist) {
 			System.out.println("delete old record from db: " + VolunteerOldDataLocation);

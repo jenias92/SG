@@ -1,9 +1,15 @@
+package Users;
+
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+
+import Mitnadev.*;
+import Amuta.*;
+import Login.*;
 public class UserController {
 	
 	private LogInView view;

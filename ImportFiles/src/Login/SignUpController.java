@@ -1,4 +1,5 @@
-import java.awt.Component;
+package Login;
+
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +8,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import Users.*;
+import Login.*;
 
 public class SignUpController {
 	
