@@ -28,7 +28,9 @@ public class VolunteersController {
 		view.getAgeField().setText(model.getAge());
 		view.getCityField().setText(model.getCity());
 		view.getAddressField().setText(model.getAdress());
-		//view.getAssosicationField().setText(model.getAssosication()); TODO: Uncomment when added AMUTA
+		view.getAssosicationField().setText(model.getAssociation());
+		// view.getAssosicationField().setText(model.getAssosication()); TODO: Uncomment
+		// when added AMUTA
 		view.getSubmit().addActionListener(e -> {
 			try {
 				updateVolunteer();
@@ -48,15 +50,6 @@ public class VolunteersController {
 	private void updateVolunteer() throws IOException {
 		Boolean continueUpdate = this.validateValues();
 		if (continueUpdate) {
-			// update the labels to black color
-			view.getFullNameLabel().setForeground(java.awt.Color.black);
-			view.getTelephoneField().setForeground(java.awt.Color.black);
-			view.getAgeLabel().setForeground(java.awt.Color.black);
-			view.getCityLabel().setForeground(java.awt.Color.black);
-			view.getAddressLabel().setForeground(java.awt.Color.black);
-			view.getHobbiesLabel().setForeground(java.awt.Color.black);
-			view.getLanguagiesLabel().setForeground(java.awt.Color.black);
-			// end
 			String hobbies = String.join(", ", view.getHobbiesField().getSelectedValuesList());
 			String langs = String.join(", ", view.getLanguagiesField().getSelectedValuesList());
 			hobbies = hobbies.replace(",", "/");
@@ -128,32 +121,46 @@ public class VolunteersController {
 		if (fullName.isEmpty()) {
 			view.getFullNameLabel().setForeground(java.awt.Color.red);
 			numOfIssues++;
+		} else {
+			view.getFullNameLabel().setForeground(java.awt.Color.black);
 		}
 		if (teletPhone.isEmpty()) {
 			view.getTelephoneLabel().setForeground(java.awt.Color.red);
 			numOfIssues++;
+		} else {
+			view.getTelephoneLabel().setForeground(java.awt.Color.black);
 		}
 		if (age.isEmpty()) {
 			view.getAgeLabel().setForeground(java.awt.Color.red);
 			numOfIssues++;
+		} else {
+			view.getAgeLabel().setForeground(java.awt.Color.black);
 		}
 		if (city.isEmpty()) {
 			view.getCityLabel().setForeground(java.awt.Color.red);
 			numOfIssues++;
+		} else {
+			view.getCityLabel().setForeground(java.awt.Color.black);
 		}
 		if (address.isEmpty()) {
 			view.getAddressLabel().setForeground(java.awt.Color.red);
 			numOfIssues++;
+		} else {
+			view.getAddressLabel().setForeground(java.awt.Color.black);
 		}
 
 		if (hobbies.length == 0) {
 			view.getHobbiesLabel().setForeground(java.awt.Color.red);
 			numOfIssues++;
+		} else {
+			view.getHobbiesLabel().setForeground(java.awt.Color.black);
 		}
 
 		if (langs.length == 0) {
 			view.getLanguagiesLabel().setForeground(java.awt.Color.red);
 			numOfIssues++;
+		} else {
+			view.getLanguagiesLabel().setForeground(java.awt.Color.black);
 		}
 
 		if (numOfIssues > 0) {

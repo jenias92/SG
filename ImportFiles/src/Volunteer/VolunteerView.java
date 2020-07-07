@@ -69,6 +69,8 @@ public class VolunteerView extends JFrame {
 		message = new JLabel();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		assosicationField.setEnabled(false);
+		idField.setEnabled(false);
 
 		welcomeMessage.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 		welcomeMessage.setHorizontalAlignment(SwingConstants.CENTER);

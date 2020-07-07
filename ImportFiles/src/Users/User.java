@@ -65,12 +65,13 @@ public class User {
 				+ this.Association;
 	}
 
-	public User(String UN, String Pss, String IdU, String Em, String p, String Association) {
+	public User(String UN, String Pss, String IdU, String Em, String p, String Ass) {
 		UserName = UN;
 		Password = Pss;
 		Id = IdU;
 		Email = Em;
 		Permission = p;
+		Association = Ass;
 	}
 
 	public User(String csvData) {
@@ -85,6 +86,7 @@ public class User {
 			this.Id = UserData[2];
 			this.Email = UserData[3];
 			this.Permission = UserData[4];
+			this.Association = UserData[5];
 
 		}
 

@@ -19,8 +19,8 @@ public class Elders {
 	private String hobbies;
 	private String telephone;
 	private String matchId;
-	private static String elderDbFilePath = "C:/test/Elders.txt";
-	private static String hobbiesDBfilePath = "C:/test/EldersHobbies.txt";
+	private static String elderDbFilePath = "Elders.txt";
+	private static String hobbiesDBfilePath = "EldersHobbies.txt";
 
 	public Elders() {
 		matchId = "None";
