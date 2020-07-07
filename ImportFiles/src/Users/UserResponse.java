@@ -1,7 +1,5 @@
 package Users;
 
-
-
 public class UserResponse {
 	
 	private boolean success;

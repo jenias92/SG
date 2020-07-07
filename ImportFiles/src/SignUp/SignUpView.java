@@ -1,4 +1,4 @@
-package Login;
+package SignUp;
 
 import java.awt.EventQueue;
 

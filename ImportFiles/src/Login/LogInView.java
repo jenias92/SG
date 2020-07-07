@@ -1,6 +1,4 @@
 package Login;
-import Users.*;
-
 import java.awt.EventQueue;
 import java.io.File;
 
@@ -9,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
