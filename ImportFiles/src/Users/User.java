@@ -1,12 +1,16 @@
+package Users;
+
 
 public class User {
 
-	private String UserName;
-	private String Password;
-	private String Id;
-	private String Email;
-	private String Permission;
+	protected String UserName;
+	protected String Password;
+	protected String Id;
+	protected String Email;
+	protected String Permission;
 	
+	
+	public User() {}
 	
 	public void SetUserName( String name)
 	{

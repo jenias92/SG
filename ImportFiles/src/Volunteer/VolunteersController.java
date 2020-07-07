@@ -21,14 +21,14 @@ public class VolunteersController {
 		view.setVisible(true);
 		view.setSize(510, 450);
 		model.ShowInfo();
-		view.getWelcomeMessage().setText("ברוך הבא " + model.getUsername());
+		view.getWelcomeMessage().setText("ברוך הבא " + model.GetUserName());
 		view.getIdField().setText(model.getUserID());
 		view.getFullnameField().setText(model.getFullname());
 		view.getTelephoneField().setText(model.getPhoneNumber());
 		view.getAgeField().setText(model.getAge());
 		view.getCityField().setText(model.getCity());
 		view.getAddressField().setText(model.getAdress());
-		view.getAssosicationField().setText(model.getAssosication());
+		//view.getAssosicationField().setText(model.getAssosication()); TODO: Uncomment when added AMUTA
 		view.getSubmit().addActionListener(e -> {
 			try {
 				updateVolunteer();
