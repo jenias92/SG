@@ -3,9 +3,10 @@ package Amuta;
 import java.io.File;
 import java.io.IOException;
 
-import Login.*;
-import Users.*;
 import ElderList.*;
+import Login.*;
+import SignUp.*;
+import Users.User;
 
 public class AmutaController {
 
