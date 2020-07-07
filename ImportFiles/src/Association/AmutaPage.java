@@ -1,3 +1,4 @@
+package Association;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
