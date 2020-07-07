@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import Login.*;
 import Users.User;
 
 public class Volunteers extends User {
@@ -24,12 +23,19 @@ public class Volunteers extends User {
 	private String PhoneNumber;
 	private String MatchStatus;
 	private static int VolunteerOldDataLocation;
-	private static String VolunteersFilePath = "C:/test/volunteers.txt";
+	private static String VolunteersFilePath = "volunteers.txt";
 
-	public Volunteers(String Username, String Password, String Id, String Email, String Assosication) {
-		super(Username, Password, Id, Email, Assosication);
+//	public Volunteers(String Username, String Password, String Id, String Email, String Permission,
+//			String Assosication) {
+//		super(Username, Password, Id, Email, Permission, Assosication);
+//		VolunteerOldDataLocation = -1;
+////		UserID = user.getID();
+//	}
+
+	public Volunteers(User single) {
+		super(single.GetUserName(), single.GetPassword(), single.GetId(), single.GetEmail(), single.GetPermission(),
+				single.getAssociation());
 		VolunteerOldDataLocation = -1;
-//		UserID = user.getID();
 	}
 
 	public Volunteers() {
@@ -159,6 +165,8 @@ public class Volunteers extends User {
 			System.out.println(getAllData());
 		} else {
 			System.out.println("Voulnteer not found");
+			UserID = Id;
+
 		}
 	}
 
@@ -166,7 +174,7 @@ public class Volunteers extends User {
 		Volunteers single = null;
 		for (int i = 0; i < db.size(); i++) {
 			single = db.get(i);
-			if (firstId.equals(Id)) {
+			if (firstId.equals(db.get(i).getUserID())) {
 				System.out.println("Insert Voulnteer to object from DB");
 				VolunteerOldDataLocation = i;
 				Fullname = single.getFullname();
@@ -179,10 +187,9 @@ public class Volunteers extends User {
 				PhoneNumber = single.getPhoneNumber();
 				MatchStatus = single.getMatchStatus();
 				break;
-			} else {
-				System.out.println("nothing to insert as volunteer doesn't exist in voulnteer table");
 			}
 		}
+		System.out.println("nothing to insert as volunteer doesn't exist in voulnteer table");
 	}
 
 	public static Boolean checkIfVolunteerExist(String id, List<Volunteers> db) {

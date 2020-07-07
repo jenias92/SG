@@ -2,13 +2,13 @@ package SignUp;
 
 import java.awt.EventQueue;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class SignUpView {
 
@@ -25,9 +25,8 @@ public class SignUpView {
 	private JRadioButton amutaRadioButton;
 	private JRadioButton mitnadevRadioButton;
 	private JLabel chooseAmuta;
-	private JComboBox comboBox ;
+	private JComboBox comboBox;
 	private JButton next;
-	
 
 	/**
 	 * Launch the application.
@@ -54,64 +53,64 @@ public class SignUpView {
 		frame.setBounds(100, 100, 621, 598);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		 signuptitle = new JLabel("הרשמה");
-		 usernametitel = new JLabel("שם משתמש:");
-		 passtitel = new JLabel("סיסמא:");
-		 idtitel = new JLabel("תעודת זהות:");
-		 emailtitel = new JLabel("אימייל:");
+
+		signuptitle = new JLabel("הרשמה");
+		usernametitel = new JLabel("שם משתמש:");
+		passtitel = new JLabel("סיסמא:");
+		idtitel = new JLabel("תעודת זהות:");
+		emailtitel = new JLabel("אימייל:");
 		userNameText = new JTextField();
 		idText = new JTextField();
 		passwordField = new JPasswordField();
 		emailText = new JTextField();
-		 amutaRadioButton = new JRadioButton("עמותה");
-		 mitnadevRadioButton = new JRadioButton("מתנדב");
-		 chooseAmuta = new JLabel("בחר עמותה:");
-		 comboBox = new JComboBox();
-		 next = new JButton("המשך");
+		amutaRadioButton = new JRadioButton("עמותה");
+		mitnadevRadioButton = new JRadioButton("מתנדב");
+		chooseAmuta = new JLabel("בחר עמותה:");
+		comboBox = new JComboBox();
+		next = new JButton("המשך");
 
 		signuptitle.setBounds(239, 28, 115, 33);
 		frame.getContentPane().add(signuptitle);
-		
+
 		usernametitel.setBounds(371, 95, 166, 33);
 		frame.getContentPane().add(usernametitel);
-		
+
 		passtitel.setBounds(371, 147, 101, 33);
 		frame.getContentPane().add(passtitel);
-		
+
 		idtitel.setBounds(372, 208, 155, 33);
 		frame.getContentPane().add(idtitel);
-		
+
 		emailtitel.setBounds(371, 269, 89, 33);
 		frame.getContentPane().add(emailtitel);
-		
+
 		userNameText.setBounds(115, 89, 236, 39);
 		frame.getContentPane().add(userNameText);
 		userNameText.setColumns(10);
-		
+
 		idText.setBounds(118, 205, 236, 39);
 		frame.getContentPane().add(idText);
 		idText.setColumns(10);
-		
+
 		passwordField.setBounds(115, 147, 239, 36);
 		frame.getContentPane().add(passwordField);
-		
+
 		emailText.setBounds(118, 266, 236, 39);
 		frame.getContentPane().add(emailText);
 		emailText.setColumns(10);
-		
+
 		amutaRadioButton.setBounds(103, 329, 134, 41);
 		frame.getContentPane().add(amutaRadioButton);
-		
+
 		mitnadevRadioButton.setBounds(286, 329, 251, 41);
 		frame.getContentPane().add(mitnadevRadioButton);
-		
+
 		chooseAmuta.setBounds(371, 381, 154, 33);
 		frame.getContentPane().add(chooseAmuta);
-		
+
 		comboBox.setBounds(187, 378, 161, 39);
 		frame.getContentPane().add(comboBox);
-		
+
 		next.setBounds(40, 441, 171, 41);
 		frame.getContentPane().add(next);
 	}
@@ -235,5 +234,5 @@ public class SignUpView {
 	public void setNext(JButton next) {
 		this.next = next;
 	}
-	
+
 }

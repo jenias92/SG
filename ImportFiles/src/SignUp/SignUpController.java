@@ -22,42 +22,48 @@ public class SignUpController {
 
 	public void init() {
 		view.getNext().addActionListener(e -> {
-			String userName = view.getUserNameText().getText();
-			String password = view.getPasswordField().getText();
-			String id = view.getIdText().getText();
-			String email = view.getEmailText().getText();
-			String isMitnadev;
-			String Association = view.getAssociation().getText();
-			if (view.getMitnadevRadioButton().isSelected()) {
-				isMitnadev = "1";
-			} else {
-				isMitnadev = "0";
-			}
-
-			User usrTmp1 = new User(userName, password, id, email, isMitnadev, Association);
-			boolean success = false;
-			try {
-				success = model.SignUp(usrTmp1);
-			} catch (IOException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-			if (!success) {
-				JOptionPane.showMessageDialog(view.getFrame(), "הפרטים שהזנת שגויים! נסה שנית");
-				;
-			} else {
-				JOptionPane.showMessageDialog(view.getFrame(), "AidFinder-נרשמת בהצלחה ל");
-				view.getFrame().dispose();
-				LogInView lv = new LogInView();
-				File usersFile = new File("users.txt");
-				UserModel umod;
-				try {
-					umod = new UserModel(usersFile);
-					UserController c = new UserController(lv, umod);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+			Boolean continueSignup = this.validateValues();
+			if (continueSignup) {
+				String userName = view.getUserNameText().getText();
+				String password = view.getPasswordField().getText();
+				String id = view.getIdText().getText();
+				String email = view.getEmailText().getText();
+				String isMitnadev;
+				// String Association = view.getAssociation().getText();
+				String Association = "תנו לחיות לחיות";
+				if (view.getMitnadevRadioButton().isSelected()) {
+					isMitnadev = "1";
+				} else {
+					isMitnadev = "0";
 				}
+
+				User usrTmp1 = new User(userName, password, id, email, isMitnadev, Association);
+				boolean success = false;
+				try {
+					success = model.SignUp(usrTmp1);
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				if (!success) {
+					JOptionPane.showMessageDialog(view.getFrame(), "הפרטים שהזנת שגויים! נסה שנית");
+					;
+				} else {
+					JOptionPane.showMessageDialog(view.getFrame(), "AidFinder-נרשמת בהצלחה ל");
+					view.getFrame().dispose();
+					LogInView lv = new LogInView();
+					File usersFile = new File("users.txt");
+					UserModel umod;
+					try {
+						umod = new UserModel(usersFile);
+						UserController c = new UserController(lv, umod);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			} else {
+				System.out.println("form validation failed");
 			}
 
 		});
@@ -77,6 +83,52 @@ public class SignUpController {
 
 		});
 
+	}
+
+	private Boolean validateValues() {
+		String userName = view.getUserNameText().getText();
+		String password = view.getPasswordField().getText();
+		String email = view.getEmailText().getText();
+		String id = view.getIdText().getText();
+
+		int numOfIssues = 0;
+		Boolean state = true;
+		if (userName.isEmpty()) {
+			view.getUsernametitel().setForeground(java.awt.Color.red);
+			numOfIssues++;
+		} else {
+			view.getUsernametitel().setForeground(java.awt.Color.black);
+		}
+		if (password.isEmpty()) {
+			view.getPasstitel().setForeground(java.awt.Color.red);
+			numOfIssues++;
+		} else {
+			view.getPasstitel().setForeground(java.awt.Color.black);
+		}
+		if (email.isEmpty()) {
+			view.getEmailtitel().setForeground(java.awt.Color.red);
+			numOfIssues++;
+		} else {
+			view.getEmailtitel().setForeground(java.awt.Color.black);
+		}
+		if (id.isEmpty()) {
+			view.getIdtitel().setForeground(java.awt.Color.red);
+			numOfIssues++;
+		} else {
+			view.getIdtitel().setForeground(java.awt.Color.black);
+		}
+		if (!view.getMitnadevRadioButton().isSelected() || !view.getAmutaRadioButton().isSelected()) {
+			view.getMitnadevRadioButton().setForeground(java.awt.Color.red);
+			view.getAmutaRadioButton().setForeground(java.awt.Color.red);
+			numOfIssues++;
+		} else {
+			view.getMitnadevRadioButton().setForeground(java.awt.Color.black);
+			view.getAmutaRadioButton().setForeground(java.awt.Color.black);
+		}
+		if (numOfIssues > 0) {
+			state = false;
+		}
+		return state;
 	}
 
 }
