@@ -39,6 +39,8 @@ public class VolunteerView extends JFrame {
 	private JTextField telephoneField;
 	private JLabel userIdLabel;
 	private JLabel welcomeMessage;
+	private JButton back;
+
 	// End of variables declaration
 
 	public VolunteerView() {
@@ -67,6 +69,7 @@ public class VolunteerView extends JFrame {
 		LanguagiesLabel = new JLabel();
 		submit = new JButton();
 		message = new JLabel();
+		back = new JButton();
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		assosicationField.setEnabled(false);
@@ -105,6 +108,7 @@ public class VolunteerView extends JFrame {
 		LanguagiesLabel.setFont(new Font("Arial", 0, 14)); // NOI18N
 		LanguagiesLabel.setText("שפות:");
 		submit.setText("עדכן");
+		back.setText("חזור");
 
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -133,7 +137,7 @@ public class VolunteerView extends JFrame {
 														.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
 																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 														.addComponent(addressLabel)))
-										.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+										.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
 										.addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
 												.addGroup(layout.createSequentialGroup().addComponent(cityField)
 														.addGap(18, 18, 18).addComponent(cityLabel))
@@ -148,11 +152,18 @@ public class VolunteerView extends JFrame {
 																GroupLayout.PREFERRED_SIZE)
 														.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 														.addComponent(userIdLabel))))
-								.addGroup(GroupLayout.Alignment.TRAILING,
-										layout.createSequentialGroup()
-												.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-														.addComponent(assosicationField)
-														.addGroup(layout.createSequentialGroup()
+								.addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+										.addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+												.addGroup(layout.createSequentialGroup()
+														.addComponent(submit, GroupLayout.PREFERRED_SIZE, 131,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
+																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														.addComponent(back, GroupLayout.PREFERRED_SIZE, 131,
+																GroupLayout.PREFERRED_SIZE))
+												.addComponent(assosicationField, GroupLayout.Alignment.LEADING)
+												.addGroup(GroupLayout.Alignment.LEADING,
+														layout.createSequentialGroup()
 																.addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE,
 																		100, GroupLayout.PREFERRED_SIZE)
 																.addGap(18, 18, 18).addComponent(LanguagiesLabel)
@@ -160,17 +171,13 @@ public class VolunteerView extends JFrame {
 																		GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 																.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE,
 																		100, GroupLayout.PREFERRED_SIZE)))
-												.addGap(27, 27, 27)
-												.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-														.addComponent(assosicationLabel, GroupLayout.Alignment.TRAILING)
-														.addComponent(HobbiesLabel, GroupLayout.Alignment.TRAILING))))
+										.addGap(27, 27, 27)
+										.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+												.addComponent(assosicationLabel, GroupLayout.Alignment.TRAILING)
+												.addComponent(HobbiesLabel, GroupLayout.Alignment.TRAILING))))
 						.addGap(30, 30, 30))
-				.addGroup(layout.createSequentialGroup()
-						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-								.addGroup(layout.createSequentialGroup().addGap(162, 162, 162).addComponent(submit,
-										GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE))
-								.addGroup(layout.createSequentialGroup().addGap(138, 138, 138).addComponent(message,
-										GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)))
+				.addGroup(layout.createSequentialGroup().addGap(138, 138, 138)
+						.addComponent(message, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(
 				GroupLayout.Alignment.TRAILING,
@@ -208,9 +215,11 @@ public class VolunteerView extends JFrame {
 												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(LanguagiesLabel))
 						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(message)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(submit, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(14, Short.MAX_VALUE)));
+						.addGap(18, 18, 18)
+						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+								.addComponent(submit, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+								.addComponent(back, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(37, Short.MAX_VALUE)));
 
 		pack();
 	}
@@ -321,6 +330,14 @@ public class VolunteerView extends JFrame {
 
 	public JTextField getFullnameField() {
 		return fullnameField;
+	}
+
+	public JButton getBack() {
+		return back;
+	}
+
+	public void setBack(JButton back) {
+		this.back = back;
 	}
 
 	public void setFullnameField(JTextField fullnameField) {

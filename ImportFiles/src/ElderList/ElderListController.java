@@ -44,7 +44,7 @@ public class ElderListController {
 			ImportElderView v = new ImportElderView("ImportElders", "Welcome to Elders Import Area, please select file",
 					"Select Elder File", "Process File");
 			ImportElderController c = new ImportElderController(m, v);
-			c.initImportElderController();
+			c.initImportElderController(data);
 		});
 	}
 

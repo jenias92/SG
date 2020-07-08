@@ -46,27 +46,27 @@ public class MitnadevController {
 			}
 		});
 
-		view.getEdit().addActionListener(e -> {//קישור לכפתור עריכת פרטיים אישיים 
+		view.getEdit().addActionListener(e -> {// קישור לכפתור עריכת פרטיים אישיים
 
 			view.getFrame().dispose();
 			try {
-				Volunteers m  = model.getVolunteerByUserID(userData);
+				Volunteers m = model.getVolunteerByUserID(userData);
 				System.out.println(m.getUserID());
 				VolunteerView v = new VolunteerView();
 				VolunteersController c = new VolunteersController(m, v);
-				c.initVolunteersController();
+				c.initVolunteersController(data);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
-	    view.getStatus().addActionListener(e->{//קישור לכפתור סטאטוס התאמה 
-	    	view.getFrame().dispose();
-	    	StatusMatchView smv = new StatusMatchView();
+		view.getStatus().addActionListener(e -> {// קישור לכפתור סטאטוס התאמה
+			view.getFrame().dispose();
+			StatusMatchView smv = new StatusMatchView();
 			File usersFile = new File("users.txt");
 			StatusMatchModel umod;
 			try {
-				Volunteers vol  = model.getVolunteerByUserID(userData);
+				Volunteers vol = model.getVolunteerByUserID(userData);
 				umod = new StatusMatchModel(usersFile);
 				StatusMatchController c = new StatusMatchController(smv, umod);
 				c.Init(vol);
@@ -74,7 +74,7 @@ public class MitnadevController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-	    });
+		});
 
 	}
 }

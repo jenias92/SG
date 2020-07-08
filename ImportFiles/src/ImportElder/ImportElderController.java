@@ -1,5 +1,6 @@
 package ImportElder;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -7,7 +8,11 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
+import Amuta.AmutaController;
+import Amuta.AmutaModel;
+import Amuta.AmutaPage;
 import Elders.Elders;
+import Users.User;
 
 public class ImportElderController {
 
@@ -19,12 +24,26 @@ public class ImportElderController {
 		view = v;
 	}
 
-	public void initImportElderController() {
+	public void initImportElderController(User data) {
 		view.setVisible(true);
-		view.getjButton1().addActionListener(e -> chooseExcelFileWindow());
-		view.getjButton2().addActionListener(e -> {
+		view.getSelectFile().addActionListener(e -> chooseExcelFileWindow());
+		view.getSubmit().setEnabled(false);
+		view.getSubmit().addActionListener(e -> {
 			try {
 				processExcelFile();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		view.getBack().addActionListener(e -> {
+			try {
+				view.dispose();
+				AmutaPage ap = new AmutaPage();
+				File usersFile = new File("users.txt");
+				AmutaModel amod = new AmutaModel(usersFile);
+				AmutaController ac = new AmutaController(ap, amod);
+				ac.Init(data);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -41,8 +60,8 @@ public class ImportElderController {
 		int r = fileChoose.showOpenDialog(null);
 		if (r == JFileChooser.APPROVE_OPTION) {
 			// set the label to the path of the selected file
-			view.getjTextField1().setText(fileChoose.getSelectedFile().getAbsolutePath());
-			view.getjButton2().setEnabled(true);
+			view.getPath().setText(fileChoose.getSelectedFile().getAbsolutePath());
+			view.getSubmit().setEnabled(true);
 			model.setUserExcelFile(fileChoose.getSelectedFile().getAbsolutePath());
 		}
 	}
@@ -50,15 +69,15 @@ public class ImportElderController {
 	private void processExcelFile() throws IOException {
 		String output;
 		if (!model.getUserExcelFile().isEmpty()) {
-			view.getjTextArea1().setText("File in process");
+			view.getResult().setText("File in process");
 			ImportFromExcel reader = new ImportFromExcel();
 			List<Elders> NewEldersList = null;
 			NewEldersList = reader.readBooksFromExcelFile(model.getUserExcelFile());
 			output = Elders.InsertIntoDB(NewEldersList);
 //			output = reader.InsertIntoDB(NewEldersList);
-			view.getjTextArea1().setText(output);
+			view.getResult().setText(output);
 		} else {
-			view.getjTextArea1().setText("Couldn't load the file, please try again");
+			view.getResult().setText("Couldn't load the file, please try again");
 		}
 	}
 }
