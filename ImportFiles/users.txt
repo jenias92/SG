@@ -1,5 +1,5 @@
-יפה,999,999,יפוש,0,null
-ג'ניה ,111,111,ג'ניה,0,עמותת ג'ניה ובניו
-תדי,222,222,תדי,0,עמותת תדי ופועליו
-מיטל,333,333,מיטל,0,עמותת יד לנשים
-
+yyy,yyy,yyy,yyy,0,yyy
+uuu,uuu,uuu,uuu,0,uuu
+fff,fff,fff,fff,0,fff
+hhh,hhh,hhh,hhh,0,hhh
+ddd,ddd,ddd,ddd,0,ddd

@@ -35,7 +35,7 @@ public class SignUpModel {
 			String IdUser = a.GetId();
 			String EmailUser = a.GetEmail();
 			String Per = a.GetPermission();
-			/*String Association = a.getAssociation();*/
+			String Association = a.getAssociation();
 
 			if (Name.equals(user.GetUserName())) {
 				br.close();
