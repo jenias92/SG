@@ -21,7 +21,7 @@ public class Volunteers extends User {
 	private String[] Hobbies;
 	private String[] Languagies;
 	private String PhoneNumber;
-	private String MatchStatus;
+	private String MatchStatus=null;
 	private static int VolunteerOldDataLocation;
 	private static String VolunteersFilePath = "volunteers.txt";
 
@@ -160,12 +160,12 @@ public class Volunteers extends User {
 
 	public void ShowInfo() throws IOException {
 		List<Volunteers> db = ReadDataFromDB();
-		InsertVolunteerToObjectIfExist(Id, db);
+		InsertVolunteerToObjectIfExist(this.GetId(), db);
 		if (VolunteerOldDataLocation != -1) {
 			System.out.println(getAllData());
 		} else {
 			System.out.println("Voulnteer not found");
-			UserID = Id;
+			UserID = this.GetId();
 
 		}
 	}
