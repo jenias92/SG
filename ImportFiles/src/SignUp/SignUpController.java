@@ -61,6 +61,7 @@ public class SignUpController {
 					try {
 						umod = new UserModel(usersFile);
 						UserController c = new UserController(lv, umod);
+						c.init();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
