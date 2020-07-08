@@ -7,7 +7,7 @@ public class User {
 	protected String Id;
 	protected String Email;
 	protected String Permission;
-	protected String Association;
+	protected String Association;//שם עמותה
 
 	public String getAssociation() {
 		return Association;
@@ -65,13 +65,13 @@ public class User {
 				+ this.Association;
 	}
 
-	public User(String UN, String Pss, String IdU, String Em, String p, String Ass) {
+	public User(String UN, String Pss, String IdU, String Em, String p, String Assoc) {
 		UserName = UN;
 		Password = Pss;
 		Id = IdU;
 		Email = Em;
 		Permission = p;
-		Association = Ass;
+		Association =Assoc;
 	}
 
 	public User(String csvData) {
@@ -86,8 +86,7 @@ public class User {
 			this.Id = UserData[2];
 			this.Email = UserData[3];
 			this.Permission = UserData[4];
-			this.Association = UserData[5];
-
+			this.Association=UserData[5];
 		}
 
 	}

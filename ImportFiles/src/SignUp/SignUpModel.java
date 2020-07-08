@@ -3,9 +3,12 @@ package SignUp;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Users.User;
 
@@ -32,7 +35,7 @@ public class SignUpModel {
 			String IdUser = a.GetId();
 			String EmailUser = a.GetEmail();
 			String Per = a.GetPermission();
-			String Association = a.getAssociation();
+			/*String Association = a.getAssociation();*/
 
 			if (Name.equals(user.GetUserName())) {
 				br.close();
@@ -60,5 +63,21 @@ public class SignUpModel {
 		writer.close();
 		return true;
 	}
+ 
+	public List<String>  GetAllAmutotNames() throws IOException{
+		List<String> Amutot = new ArrayList<>();
 
+		FileReader fr = null;
+		fr = new FileReader(this.file);
+		BufferedReader br = new BufferedReader(fr);
+		String s1 = br.readLine();
+
+		while (s1 != null && s1.length() != 0) {
+			User a = new User(s1);
+			if(a.GetPermission().equals("0"))
+			Amutot.add(a.getAssociation());	
+			s1 = br.readLine();
+		}
+		return Amutot;
+	}
 }

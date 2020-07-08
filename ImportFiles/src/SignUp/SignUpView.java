@@ -27,6 +27,8 @@ public class SignUpView {
 	private JLabel chooseAmuta;
 	private JComboBox comboBox;
 	private JButton next;
+	private JTextField textfieldAmuta;
+	private JLabel NameAmuta;
 
 	/**
 	 * Launch the application.
@@ -63,11 +65,13 @@ public class SignUpView {
 		idText = new JTextField();
 		passwordField = new JPasswordField();
 		emailText = new JTextField();
-		amutaRadioButton = new JRadioButton("עמותה");
-		mitnadevRadioButton = new JRadioButton("מתנדב");
-		chooseAmuta = new JLabel("בחר עמותה:");
-		comboBox = new JComboBox();
-		next = new JButton("המשך");
+		 amutaRadioButton = new JRadioButton("עמותה");
+		 mitnadevRadioButton = new JRadioButton("מתנדב");
+		 chooseAmuta = new JLabel("בחר עמותה:");
+		 comboBox = new JComboBox();
+		 next = new JButton("המשך");
+		 textfieldAmuta = new JTextField();
+		 NameAmuta = new JLabel("שם עמותה:");
 
 		signuptitle.setBounds(239, 28, 115, 33);
 		frame.getContentPane().add(signuptitle);
@@ -113,6 +117,31 @@ public class SignUpView {
 
 		next.setBounds(40, 441, 171, 41);
 		frame.getContentPane().add(next);
+		
+		textfieldAmuta.setBounds(115, 378, 236, 39);
+		frame.getContentPane().add(textfieldAmuta);
+		textfieldAmuta.setColumns(10);
+		textfieldAmuta.setVisible(false);
+		
+		NameAmuta.setBounds(371, 381, 138, 33);
+		frame.getContentPane().add(NameAmuta);
+		NameAmuta.setVisible(false);
+	}
+
+	public JTextField getTextfieldAmuta() {
+		return textfieldAmuta;
+	}
+
+	public void setTextfieldAmuta(JTextField textfieldAmuta) {
+		this.textfieldAmuta = textfieldAmuta;
+	}
+
+	public JLabel getNameAmuta() {
+		return NameAmuta;
+	}
+
+	public void setNameAmuta(JLabel nameAmuta) {
+		NameAmuta = nameAmuta;
 	}
 
 	public JFrame getFrame() {
@@ -234,5 +263,4 @@ public class SignUpView {
 	public void setNext(JButton next) {
 		this.next = next;
 	}
-
 }
