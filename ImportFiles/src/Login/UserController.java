@@ -111,28 +111,4 @@ public class UserController {
 		return state;
 	}
 
-	private Boolean validateValues() {
-		String userName = view.getUsernameField().getText();
-		String password = view.getPasswordField().getText();
-
-		int numOfIssues = 0;
-		Boolean state = true;
-		if (userName.isEmpty()) {
-			view.getUsername().setForeground(java.awt.Color.red);
-			numOfIssues++;
-		} else {
-			view.getUsername().setForeground(java.awt.Color.black);
-		}
-		if (password.isEmpty()) {
-			view.getPassword().setForeground(java.awt.Color.red);
-			numOfIssues++;
-		} else {
-			view.getPassword().setForeground(java.awt.Color.black);
-		}
-		if (numOfIssues > 0) {
-			state = false;
-		}
-		return state;
-	}
-
 }
