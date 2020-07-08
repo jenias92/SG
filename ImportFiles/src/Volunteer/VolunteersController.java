@@ -1,10 +1,15 @@
 package Volunteer;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 import Elders.Elders;
+import Mitnadev.MitnadevController;
+import Mitnadev.MitnadevModel;
+import Mitnadev.MitnadevPage;
+import Users.User;
 
 public class VolunteersController {
 
@@ -17,7 +22,7 @@ public class VolunteersController {
 		view = v;
 	}
 
-	public void initVolunteersController() throws IOException {
+	public void initVolunteersController(User data) throws IOException {
 		view.setVisible(true);
 		view.setSize(510, 450);
 		model.ShowInfo();
@@ -34,6 +39,19 @@ public class VolunteersController {
 		view.getSubmit().addActionListener(e -> {
 			try {
 				updateVolunteer();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		view.getBack().addActionListener(e -> {
+			try {
+				view.dispose();
+				MitnadevPage mp = new MitnadevPage();
+				File usersFile = new File("users.txt");
+				MitnadevModel mod = new MitnadevModel(usersFile);
+				MitnadevController c = new MitnadevController(mp, mod);
+				c.Init(data);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
