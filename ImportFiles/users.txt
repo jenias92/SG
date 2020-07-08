@@ -1,5 +1,4 @@
-yyy,yyy,yyy,yyy,0,yyy
-uuu,uuu,uuu,uuu,0,uuu
-fff,fff,fff,fff,0,fff
-hhh,hhh,hhh,hhh,0,hhh
-ddd,ddd,ddd,ddd,0,ddd
+יד שרה,111,111,יד שרה,0,יד שרה
+יובל,2911,2911,יובל,1,יד שרה
+יבגני,888,888,888,1,יד שרה
+תדי,555,555,תדי,1,יד שרה

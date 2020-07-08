@@ -45,14 +45,14 @@ public class UserController {
 					} else// כאשר מצא , שולח הודעה ומקשר לעמוד המתאים לפי סוג המשתמש.
 					{
 						JOptionPane.showMessageDialog(view.getFrame(), "AidFinder-ברוך הבא ל");
-						if (usrTmp.GetPermission().equals("1")) {
+						if (usrTmp.GetPermission().equals("1")) {//עם הוא מתנדב
 							view.getFrame().dispose();
 							MitnadevPage mp = new MitnadevPage();
 							File usersFile = new File("users.txt");
 							MitnadevModel mod = new MitnadevModel(usersFile);
 							MitnadevController c = new MitnadevController(mp, mod);
 							c.Init(res.GetData());
-						} else {
+						} else {//אם הוא עמותה
 							view.getFrame().dispose();
 							AmutaPage ap = new AmutaPage();
 							File usersFile = new File("users.txt");
