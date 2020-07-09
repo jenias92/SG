@@ -2,6 +2,7 @@ package Volunteer;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 import Users.User;
 
-public class Volunteers extends User {
+public class Volunteers extends User implements IVolunteersModel {
 
 	private String Fullname;
 	private String Adress;
@@ -24,13 +25,6 @@ public class Volunteers extends User {
 	private String MatchStatus=null;
 	private static int VolunteerOldDataLocation;
 	private static String VolunteersFilePath = "volunteers.txt";
-
-//	public Volunteers(String Username, String Password, String Id, String Email, String Permission,
-//			String Assosication) {
-//		super(Username, Password, Id, Email, Permission, Assosication);
-//		VolunteerOldDataLocation = -1;
-////		UserID = user.getID();
-//	}
 
 	public Volunteers(User single) {
 		super(single.GetUserName(), single.GetPassword(), single.GetId(), single.GetEmail(), single.GetPermission(),
@@ -233,5 +227,36 @@ public class Volunteers extends User {
 		System.out.println("Update Completed");
 		return output;
 	}
+	
+	public Volunteers getVolunteerByUserID(User userData) throws FileNotFoundException {
+		File volunteerDbFile = new File(VolunteersFilePath);
+		
+		if (!volunteerDbFile.exists()) {
+			return null;
+		} else {
+			Scanner fileReader = new Scanner(volunteerDbFile);
+			String row[];
+			while (fileReader.hasNextLine()) {
+				row = fileReader.nextLine().split(",");
+				if (row.length > 1) {
+					if(row[0].equals(userData.GetId())) {
+						Volunteers single = new Volunteers(userData);
+						single.setUserID(row[0]);
+						single.setFullname(row[1]);
+						single.setAdress(row[2]);
+						single.setCity(row[3]);
+						single.setAge(row[4].replace(" ", ""));
+						single.setHobbies(row[5].replace(" ", ""));
+						single.setLanguagies(row[6].replace(" ", ""));
+						single.setPhoneNumber(row[7].replace(" ", ""));
+						single.setMatchStatus(row[8]);
+						return single;
+					}
+				}
+			}
+			fileReader.close();
+			}
+		return null;
+		}
 
 }

@@ -49,7 +49,8 @@ public class VolunteersController {
 				view.dispose();
 				MitnadevPage mp = new MitnadevPage();
 				File usersFile = new File("users.txt");
-				MitnadevModel mod = new MitnadevModel(usersFile);
+				Volunteers vModel = new Volunteers();
+				MitnadevModel mod = new MitnadevModel(vModel);
 				MitnadevController c = new MitnadevController(mp, mod);
 				c.Init(data);
 			} catch (IOException e1) {

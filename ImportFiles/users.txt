@@ -1,4 +1,10 @@
-יד שרה,111,111,יד שרה,0,יד שרה
-יובל,2911,2911,יובל,1,יד שרה
-יבגני,888,888,888,1,יד שרה
-תדי,555,555,תדי,1,יד שרה
+yad sara,111,111,yadsara@gmail.com,0,yad sara
+yuval,2911,2911,2911,1,yad sara
+meital,999,999,999,1,yad sara
+meir,555,555,555,1,yad sara
+fff,fff,fff,fff,0,fff
+yyy,yyy,yyy,yyy,1,fff
+amuta,000,000,000,0,amuta
+hhh,hhh,hhh,hhh,1,amuta
+vvv,vvv,vvv,vvv,1,yad sara
+dfdf,dfdf,dfdf,dfdf,1,yad sara
