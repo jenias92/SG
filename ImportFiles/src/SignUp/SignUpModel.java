@@ -15,12 +15,21 @@ import Users.User;
 public class SignUpModel {
 
 	private File file;
-
-	public SignUpModel(File file) throws IOException {
+	private static SignUpModel single_instance = null;
+	
+	private SignUpModel(File file) throws IOException {
 		this.file = file;
 		file.createNewFile();
 	}
-
+	
+	public static SignUpModel getInstance(File file) throws IOException 
+    { 
+        if (single_instance == null) 
+            single_instance = new SignUpModel(file); 
+  
+        return single_instance; 
+    } 
+	
 	public boolean SignUp(User user) throws IOException {
 
 		FileReader fr = null;

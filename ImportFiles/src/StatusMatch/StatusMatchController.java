@@ -1,14 +1,21 @@
 package StatusMatch;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+import Mitnadev.MitnadevController;
 import Mitnadev.MitnadevModel;
 import Mitnadev.MitnadevPage;
 import Users.User;
 import Volunteer.Volunteers;
 import Elders.*;
+import Login.LogInView;
+import Login.UserController;
+import Login.UserModel;
 public class StatusMatchController {
 	StatusMatchView view;
 	StatusMatchModel model;
@@ -25,7 +32,6 @@ public class StatusMatchController {
 	{
 		TurnOffButtons();
 		view.getFindmatch().addActionListener(e->{
-			
 			try {
 				List<Elders> listElder = Elders.ReadDataFromDB();
 				for (int i = 0; i < listElder.size(); i++) {
@@ -36,9 +42,26 @@ public class StatusMatchController {
 						VolunteerData.setMatchStatus(listElder.get(i).getId());
 						 listElder.get(i).setMatchId(VolunteerData.GetId());
 						 VolunteerData.InsertIntoDB(VolunteerData);
-						 System.out.print(true);
+						 TurnOnTheButtons();
 						 showMatchedView();
 				    } 
+					else
+					{
+						JOptionPane.showMessageDialog(view.getFrame(), "לא נמצאה התאמה");
+						try {
+							view.getFrame().dispose();
+							MitnadevPage mp = new MitnadevPage();
+							File usersFile = new File("users.txt");
+							Volunteers vModel = new Volunteers();
+							MitnadevModel mod = new MitnadevModel(vModel);
+							MitnadevController c = new MitnadevController(mp, mod);
+							c.Init(vol);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						break;
+					}
 				  }
 				}
 			} catch (IOException e1) {
@@ -53,7 +76,6 @@ public class StatusMatchController {
 	}
 	public void showMatchedView(){
 		view.getFindmatch().setVisible(false);
-		view.getAddress().setText("יאמייאמי");
 		List<Elders> listElder;
 		try {
 			listElder = Elders.ReadDataFromDB();
@@ -69,14 +91,13 @@ public class StatusMatchController {
 					view.getLanguagesAnswer().setText(listElder.get(i).getLanguages());
 					view.getLastnameAnswer().setText(listElder.get(i).getLastName());
 					view.getTelephoneAnswer().setText(listElder.get(i).getTelephone());	
+					break;
 				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	
 		
 	}
 	public void TurnOffButtons() {//מסתיר את פרטי הקשיש
@@ -89,5 +110,16 @@ public class StatusMatchController {
 		view.getLanguages().setVisible(false);
 		view.getLastname().setVisible(false);
 		view.getTelephone().setVisible(false);
+	}
+	public void TurnOnTheButtons() {//מסתיר את פרטי הקשיש
+		view.getAddress().setVisible(true);
+		view.getBirthDay().setVisible(true);
+		view.getCity().setVisible(true);
+		view.getFirstname().setVisible(true);
+		view.getHobbies().setVisible(true);
+		view.getId().setVisible(true);
+		view.getLanguages().setVisible(true);
+		view.getLastname().setVisible(true);
+		view.getTelephone().setVisible(true);
 	}
 }

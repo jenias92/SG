@@ -16,6 +16,7 @@ import SignUp.SignUpModel;
 import SignUp.SignUpView;
 import Users.User;
 import Users.UserResponse;
+import Volunteer.Volunteers;
 
 public class UserController {
 
@@ -49,7 +50,8 @@ public class UserController {
 							view.getFrame().dispose();
 							MitnadevPage mp = new MitnadevPage();
 							File usersFile = new File("users.txt");
-							MitnadevModel mod = new MitnadevModel(usersFile);
+							Volunteers vModel = new Volunteers();
+							MitnadevModel mod = new MitnadevModel(vModel);
 							MitnadevController c = new MitnadevController(mp, mod);
 							c.Init(res.GetData());
 						} else {//אם הוא עמותה
@@ -77,7 +79,7 @@ public class UserController {
 			File usersFile = new File("users.txt");
 			SignUpModel sm;
 			try {
-				sm = new SignUpModel(usersFile);
+				sm =  SignUpModel.getInstance(usersFile);
 				SignUpController m = new SignUpController(v, sm);
 				m.init();
 			} catch (IOException e1) {
@@ -85,7 +87,6 @@ public class UserController {
 				e1.printStackTrace();
 			}
 		});
-		
 	}
 	
 	private Boolean validateValues() {

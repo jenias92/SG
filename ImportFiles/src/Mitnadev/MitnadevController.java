@@ -51,8 +51,10 @@ public class MitnadevController {
 			view.getFrame().dispose();
 			try {
 				Volunteers m = model.getVolunteerByUserID(userData);
-				System.out.println(m.getUserID());
 				VolunteerView v = new VolunteerView();
+				if (m == null){
+					m=new Volunteers(userData);
+				}
 				VolunteersController c = new VolunteersController(m, v);
 				c.initVolunteersController(data);
 			} catch (IOException e1) {

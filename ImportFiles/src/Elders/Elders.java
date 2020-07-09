@@ -144,6 +144,7 @@ public class Elders {
 					single.setBirthDay(row[5]);
 					single.setLanguages(row[6]);
 					single.setHobbies(row[7]);
+					single.setTelephone(row[8]);
 					eldersDbContent.add(single);
 				}
 			}
