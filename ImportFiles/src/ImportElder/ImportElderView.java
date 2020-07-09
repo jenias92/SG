@@ -39,7 +39,7 @@ public class ImportElderView extends JFrame {
 
 		welcomeMessage.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 		welcomeMessage.setHorizontalAlignment(SwingConstants.CENTER);
-		welcomeMessage.setText("ברוך הבא יבגני סמורגון !");
+		welcomeMessage.setText("ברוך הבא  !");
 
 		submit.setText("טען קובץ");
 		back.setText("חזור");

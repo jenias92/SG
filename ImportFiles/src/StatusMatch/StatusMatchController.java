@@ -45,26 +45,10 @@ public class StatusMatchController {
 						 TurnOnTheButtons();
 						 showMatchedView();
 				    } 
-					else
-					{
-						JOptionPane.showMessageDialog(view.getFrame(), "לא נמצאה התאמה");
-						try {
-							view.getFrame().dispose();
-							MitnadevPage mp = new MitnadevPage();
-							File usersFile = new File("users.txt");
-							Volunteers vModel = new Volunteers();
-							MitnadevModel mod = new MitnadevModel(vModel);
-							MitnadevController c = new MitnadevController(mp, mod);
-							c.Init(vol);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						break;
 					}
 				  }
 				}
-			} catch (IOException e1) {
+			 catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
