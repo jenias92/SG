@@ -1,21 +1,11 @@
 package StatusMatch;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
-import Mitnadev.MitnadevController;
-import Mitnadev.MitnadevModel;
-import Mitnadev.MitnadevPage;
-import Users.User;
+import Elders.Elders;
 import Volunteer.Volunteers;
-import Elders.*;
-import Login.LogInView;
-import Login.UserController;
-import Login.UserModel;
+
 public class StatusMatchController {
 	StatusMatchView view;
 	StatusMatchModel model;
@@ -26,46 +16,43 @@ public class StatusMatchController {
 		this.model = m;
 
 	}
+
 	public void Init(Volunteers vol) {
-	this.VolunteerData=vol;
-	if(vol.getMatchStatus().equals("null"))
-	{
-		TurnOffButtons();
-		view.getFindmatch().addActionListener(e->{
-			try {
-				List<Elders> listElder = Elders.ReadDataFromDB();
-				for (int i = 0; i < listElder.size(); i++) {
-				 if(VolunteerData.getMatchStatus().equals("null"))
-				  {
-					if(listElder.get(i).getCity().equals(VolunteerData.getCity()))
-					{
-						VolunteerData.setMatchStatus(listElder.get(i).getId());
-						 listElder.get(i).setMatchId(VolunteerData.GetId());
-						 VolunteerData.InsertIntoDB(VolunteerData);
-						 TurnOnTheButtons();
-						 showMatchedView();
-				    } 
+		this.VolunteerData = vol;
+		if (vol.getMatchStatus().equals("null")) {
+			TurnOffButtons();
+			view.getFindmatch().addActionListener(e -> {
+				try {
+					List<Elders> listElder = Elders.ReadDataFromDB();
+					for (int i = 0; i < listElder.size(); i++) {
+						if (VolunteerData.getMatchStatus().equals("null")) {
+							if (listElder.get(i).getCity().equals(VolunteerData.getCity())) {
+								VolunteerData.setMatchStatus(listElder.get(i).getId());
+								listElder.get(i).setMatchId(VolunteerData.GetId());
+								Volunteers.InsertIntoDB(VolunteerData);
+								Elders.UpdateDB(listElder.get(i));
+								TurnOnTheButtons();
+								showMatchedView();
+							}
+						}
 					}
-				  }
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-			 catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
+			});
+		} else {
+			showMatchedView();
 		}
-	else{
-		showMatchedView();
 	}
-	}
-	public void showMatchedView(){
+
+	public void showMatchedView() {
 		view.getFindmatch().setVisible(false);
 		List<Elders> listElder;
 		try {
 			listElder = Elders.ReadDataFromDB();
 			for (int i = 0; i < listElder.size(); i++) {
-				if(listElder.get(i).getId().equals(VolunteerData.getMatchStatus()))
-				{
+				if (listElder.get(i).getId().equals(VolunteerData.getMatchStatus())) {
 					view.getAddressAnswer().setText(listElder.get(i).getAddress());
 					view.getBirthdayAnswer().setText(listElder.get(i).getBirthDay());
 					view.getCityAnswer().setText(listElder.get(i).getCity());
@@ -74,7 +61,7 @@ public class StatusMatchController {
 					view.getIdAnswer().setText(listElder.get(i).getId());
 					view.getLanguagesAnswer().setText(listElder.get(i).getLanguages());
 					view.getLastnameAnswer().setText(listElder.get(i).getLastName());
-					view.getTelephoneAnswer().setText(listElder.get(i).getTelephone());	
+					view.getTelephoneAnswer().setText(listElder.get(i).getTelephone());
 					break;
 				}
 			}
@@ -82,9 +69,10 @@ public class StatusMatchController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	public void TurnOffButtons() {//מסתיר את פרטי הקשיש
+
+	public void TurnOffButtons() {// מסתיר את פרטי הקשיש
 		view.getAddress().setVisible(false);
 		view.getBirthDay().setVisible(false);
 		view.getCity().setVisible(false);
@@ -95,7 +83,8 @@ public class StatusMatchController {
 		view.getLastname().setVisible(false);
 		view.getTelephone().setVisible(false);
 	}
-	public void TurnOnTheButtons() {//מסתיר את פרטי הקשיש
+
+	public void TurnOnTheButtons() {// מסתיר את פרטי הקשיש
 		view.getAddress().setVisible(true);
 		view.getBirthDay().setVisible(true);
 		view.getCity().setVisible(true);

@@ -13,3 +13,4 @@ yuval99,111,313930709,yuval56@gmail.com,0,yad lkshish
 avi,000,0000000000,avi@gmail.com,0,avi
 meital1,111,313930705,meital55@gmail.com,1,yad sara
 hyhy,hyhy,hyhy,hyhy,1,avi
+תדי,555,9995,aw@awd.net,1,yad sara
