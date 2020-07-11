@@ -22,7 +22,7 @@ public class Volunteers extends User implements IVolunteersModel {
 	private String[] Hobbies;
 	private String[] Languagies;
 	private String PhoneNumber;
-	private String MatchStatus=null;
+	private String MatchStatus = null;
 	private static int VolunteerOldDataLocation;
 	private static String VolunteersFilePath = "volunteers.txt";
 
@@ -192,7 +192,7 @@ public class Volunteers extends User implements IVolunteersModel {
 		System.out.println("Going to search Voulnteer in DB");
 		for (int i = 0; i < db.size(); i++) {
 			single = db.get(i);
-			String UserID = single.GetId();
+			String UserID = single.getUserID();
 			if (id.equals(UserID)) {
 				System.out.println("Voulnteer found");
 				VolunteerOldDataLocation = i;
@@ -206,10 +206,10 @@ public class Volunteers extends User implements IVolunteersModel {
 	public static String InsertIntoDB(Volunteers SingleUser) throws IOException {
 		boolean VoulnteerExist = false;
 		String output = "";
+		List<Volunteers> db = ReadDataFromDB();
 		File voulnteerDbFile = new File(VolunteersFilePath);
 		FileWriter fileWritter = new FileWriter(voulnteerDbFile, false);
 		BufferedWriter buffer = new BufferedWriter(fileWritter);
-		List<Volunteers> db = ReadDataFromDB();
 		String id = SingleUser.GetId();
 		VoulnteerExist = checkIfVolunteerExist(id, db);
 		if (VoulnteerExist) {
@@ -227,10 +227,10 @@ public class Volunteers extends User implements IVolunteersModel {
 		System.out.println("Update Completed");
 		return output;
 	}
-	
+
 	public Volunteers getVolunteerByUserID(User userData) throws FileNotFoundException {
 		File volunteerDbFile = new File(VolunteersFilePath);
-		
+
 		if (!volunteerDbFile.exists()) {
 			return null;
 		} else {
@@ -239,7 +239,7 @@ public class Volunteers extends User implements IVolunteersModel {
 			while (fileReader.hasNextLine()) {
 				row = fileReader.nextLine().split(",");
 				if (row.length > 1) {
-					if(row[0].equals(userData.GetId())) {
+					if (row[0].equals(userData.GetId())) {
 						Volunteers single = new Volunteers(userData);
 						single.setUserID(row[0]);
 						single.setFullname(row[1]);
@@ -255,8 +255,8 @@ public class Volunteers extends User implements IVolunteersModel {
 				}
 			}
 			fileReader.close();
-			}
-		return null;
 		}
+		return null;
+	}
 
 }

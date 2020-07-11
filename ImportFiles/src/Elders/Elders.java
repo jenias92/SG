@@ -19,11 +19,13 @@ public class Elders {
 	private String hobbies;
 	private String telephone;
 	private String matchId;
+	private static int ElderOldDataLocation;
 	private static String elderDbFilePath = "Elders.txt";
 	private static String hobbiesDBfilePath = "EldersHobbies.txt";
 
 	public Elders() {
 		matchId = "None";
+		ElderOldDataLocation = -1;
 	}
 
 	public String fullData() {
@@ -226,6 +228,7 @@ public class Elders {
 			System.out.println(UserID + " " + i);
 			if (id.equals(UserID)) {
 				System.out.println("Elder:" + id + " found in DB");
+				ElderOldDataLocation = i;
 				return true;
 			}
 		}
@@ -242,6 +245,28 @@ public class Elders {
 			}
 		}
 		return newHobbies;
+	}
+
+	public static void UpdateDB(Elders SingleElder) throws IOException {
+		boolean ElderExist = false;
+		List<Elders> db = ReadDataFromDB();
+		File EldersDbFile = new File(elderDbFilePath);
+		FileWriter fileWritter = new FileWriter(EldersDbFile, false);
+		BufferedWriter buffer = new BufferedWriter(fileWritter);
+		String id = SingleElder.getId();
+		ElderExist = searchElderInDB(id, db);
+		if (ElderExist) {
+			System.out.println("delete old record from db: " + ElderOldDataLocation);
+			db.remove(ElderOldDataLocation);
+		}
+		db.add(SingleElder);
+		System.out.println(db.get(0).fullData());
+		for (int i = 0; i <= db.size() - 1; i++) {
+			String single = db.get(i).fullData();
+			buffer.write(single + "\n");
+		}
+		buffer.close();
+		System.out.println("Update Completed");
 	}
 
 }
