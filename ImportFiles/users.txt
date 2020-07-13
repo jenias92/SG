@@ -1,16 +1,9 @@
-yad sara,111,111,yadsara@gmail.com,0,yad sara
-yuval,2911,2911,2911,1,yad sara
-meital,999,999,999,1,yad sara
-meir,555,555,555,1,yad sara
-fff,fff,fff,fff,0,fff
-yyy,yyy,yyy,yyy,1,fff
-amuta,000,000,000,0,amuta
-hhh,hhh,hhh,hhh,1,amuta
-vvv,vvv,vvv,vvv,1,yad sara
-dfdf,dfdf,dfdf,dfdf,1,yad sara
-aidfinder,111,111111111,aidfinder@gmail.com,0,aidfinder
-yuval99,111,313930709,yuval56@gmail.com,0,yad lkshish
-avi,000,0000000000,avi@gmail.com,0,avi
-meital1,111,313930705,meital55@gmail.com,1,yad sara
-hyhy,hyhy,hyhy,hyhy,1,avi
-תדי,555,9995,aw@awd.net,1,yad sara
+yevgenis,123456789,314174699,ysmorgon@airspan.com,0,סמורגון בעמ
+user1,123456789,123456789,user@user.net,1,סמורגון בעמ
+user2,123456789,123123123,user2@walla.com,1,סמורגון בעמ
+user3,123456789,456456456,user3@walla.com,1,סמורגון בעמ
+user4,123456789,789789789,user4@walla.com,1,סמורגון בעמ
+user5,123456789,147741147,user5@walla.com,1,סמורגון בעמ
+user6,123456789,258852258,user6@walla.com,1,סמורגון בעמ
+user7,123456789,369963369,user7@walla.com,1,סמורגון בעמ
+user8,123456789,012012012,user8@walla.com,1,סמורגון בעמ

@@ -1,9 +1,15 @@
 package StatusMatch;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import Elders.Elders;
+import Mitnadev.MitnadevController;
+import Mitnadev.MitnadevModel;
+import Mitnadev.MitnadevPage;
 import Volunteer.Volunteers;
 
 public class StatusMatchController {
@@ -26,7 +32,8 @@ public class StatusMatchController {
 					List<Elders> listElder = Elders.ReadDataFromDB();
 					for (int i = 0; i < listElder.size(); i++) {
 						if (VolunteerData.getMatchStatus().equals("null")) {
-							if (listElder.get(i).getCity().equals(VolunteerData.getCity())) {
+							if (listElder.get(i).getCity().equals(VolunteerData.getCity())
+									&& listElder.get(i).getMatchId().equals("None")) {
 								VolunteerData.setMatchStatus(listElder.get(i).getId());
 								listElder.get(i).setMatchId(VolunteerData.GetId());
 								Volunteers.InsertIntoDB(VolunteerData);
@@ -35,7 +42,16 @@ public class StatusMatchController {
 								showMatchedView();
 							}
 						}
+
 					}
+					JOptionPane.showMessageDialog(view.getFrame(), "לא נמצא מתנדב עבורך, אנא נסה שנית בזמן אחר");
+					view.getFrame().dispose();
+					MitnadevPage mp = new MitnadevPage();
+					File usersFile = new File("users.txt");
+					MitnadevModel mod = new MitnadevModel(VolunteerData);
+					MitnadevController c = new MitnadevController(mp, mod);
+					c.Init(VolunteerData.getUserData());
+
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
