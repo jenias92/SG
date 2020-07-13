@@ -37,6 +37,11 @@ public class Volunteers extends User implements IVolunteersModel {
 		VolunteerOldDataLocation = -1;
 	}
 
+	public User getUserData() {
+		User user = new User(this.UserName, this.Password, this.Id, this.Email, this.Permission, this.Association);
+		return user;
+	}
+
 	public String getAllData() {
 		String full;
 		String HobbiesString = Arrays.toString(Hobbies).replace(",", "/").replace("[", "").replace("]", "");

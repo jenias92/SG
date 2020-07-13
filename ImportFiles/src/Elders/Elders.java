@@ -147,6 +147,7 @@ public class Elders {
 					single.setLanguages(row[6]);
 					single.setHobbies(row[7]);
 					single.setTelephone(row[8]);
+					single.setMatchId(row[9]);
 					eldersDbContent.add(single);
 				}
 			}
